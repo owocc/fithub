@@ -21,7 +21,6 @@ useHead({
   htmlAttrs: {
     lang: 'zh'
   },
-  title: '后台管理',
+  title: '后台管理'
 })
 </script>
-

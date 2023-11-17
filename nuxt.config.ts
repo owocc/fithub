@@ -8,13 +8,15 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "@bg-dev/nuxt-naiveui",
     "nuxt-icon",
+    "@nuxtjs/google-fonts",
   ],
   typescript: {
     shim: false,
   },
+  css: ["~/assets/base.css"],
   app: {
     head: {
-      title: "FitHub",
+      title: "FitHub | 你的健身百科全书",
       link: [
         {
           rel: "icon",
@@ -23,5 +25,19 @@ export default defineNuxtConfig({
         },
       ],
     },
+  },
+  imports: {
+    dirs: [
+      "composables/client/**",
+      "composables/admin/**",
+      "composables/config/*.{ts,js}",
+    ],
+  },
+  googleFonts: {
+    families: {
+      "Kaushan+Script": true,
+    },
+    download: true,
+    overwriting: true,
   },
 });

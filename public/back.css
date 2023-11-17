@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --header-height: 3.5rem;
+}
+.triangle {
+  clip-path: polygon(100% 0, 0 100%, 100% 100%);
+}
+.triangle-l {
+  clip-path: polygon(0 0, 0 100%, 100% 100%);
+}
+@layer base {
+  body {
+    @apply bg-base-body text-base;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply text-title font-bold;
+  }
+
+  img {
+    @apply max-w-full;
+  }
+}
