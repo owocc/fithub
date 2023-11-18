@@ -2,9 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+::-webkit-scrollbar {
+  width: 0.6rem;
+  background: hsl(79, 4%, 15%);
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 0;
+  background: hsl(79, 4%, 25%);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(79, 4%, 35%);
+}
 :root {
   --header-height: 3.5rem;
 }
+.input-no-shadow {
+  box-shadow: none !important;
+}
+.arrow-hide::-webkit-outer-spin-button,
+.arrow-hide::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .triangle {
   clip-path: polygon(100% 0, 0 100%, 100% 100%);
 }
@@ -13,6 +33,7 @@
 }
 @layer base {
   body {
+    overflow-x: hidden;
     @apply bg-base-body text-base;
   }
 

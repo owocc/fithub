@@ -26,8 +26,14 @@ module.exports = {
       },
       fontFamily: {
         kaushan: ["Kaushan Script"],
+        redHat: ["Red Hat Display"],
       },
     },
   },
-  plugins: [require("@designbycode/tailwindcss-text-stroke")],
+  plugins: [
+    require("@designbycode/tailwindcss-text-stroke"),
+    require("@tailwindcss/forms")({
+      strategy: "class",
+    }),
+  ],
 };

@@ -4,7 +4,7 @@ export default defineNuxtConfig({
     enabled: true,
   },
   modules: [
-    "@sidebase/nuxt-auth",
+    // "@sidebase/nuxt-auth",
     "@nuxtjs/tailwindcss",
     "@bg-dev/nuxt-naiveui",
     "nuxt-icon",
@@ -40,4 +40,5 @@ export default defineNuxtConfig({
     download: true,
     overwriting: true,
   },
+  // auth: { origin: "http://www.localhost.com" },
 });

@@ -10,7 +10,7 @@ export default function useClientConfig () {
       text: '首页'
     },
     {
-      to: '/_tailwind/',
+      to: '/',
       text: '肌肉训练百科'
     },
     {
