@@ -1,5 +1,5 @@
 <template>
-    <ShopNavigation title="百科详情" icon="i-ri-book-read-line" back />
+    <ShopNavigation title="百科详情" back />
     <div class=" flex flex-col gap-4">
         <h1 class="text-2xl text-center">有氧运动</h1>
         <div class="bg-first-gray-950 p-4 flex flex-col-reverse md:flex-row">
