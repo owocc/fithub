@@ -2,14 +2,15 @@
     <section class="pt-32">
         <div class="px-6">
             <div class="text-center mb-16">
-                <h2 class="text-first-alt text-lg mb-4">Pricing</h2>
-                <div class="text-3xl flex items-center flex-col gap-y-1  justify-center">
-                    <h1 class="text-stroke-title text-stroke text-transparent">OUR</h1>
-                    <h1>SPECIAL PLAN</h1>
+                <h2 class="text-first-alt text-lg mb-4 font-kaushan">Popular Content</h2>
+                <div class="text-3xl flex items-center flex-col gap-y-1  justify-center md:flex-row">
+                    <h1 class="text-stroke-title text-stroke text-transparent">热门</h1>
+                    <h1>内容</h1>
                 </div>
             </div>
 
-            <div class="grid grid-cols-[285px] justify-center gap-y-8  md:grid-cols-[repeat(3,1fr)] lg:grid-cols-[repeat(3,285px)] md:gap-x-8">
+            <div
+                class="grid grid-cols-[285px] justify-center gap-y-8  md:grid-cols-[repeat(3,1fr)] lg:grid-cols-[repeat(3,285px)] md:gap-x-8">
                 <article v-for="item in 3" class="grid bg-first-gray bg-opacity-5 py-8 px-10 gap-y-8">
                     <header>
                         <div class="grid w-16 h-16 bg-first-gray rounded-full place-items-center mb-4">

@@ -17,6 +17,7 @@
     "@nuxtjs/tailwindcss": "^6.8.0",
     "@sidebase/nuxt-auth": "^0.5.0",
     "@types/node": "^18.11.18",
+    "daisyui": "^4.4.19",
     "eslint": "^8.33.0",
     "nuxt": "^3.7.4",
     "nuxt-icon": "^0.6.6",
@@ -30,6 +31,7 @@
     "@tailwindcss/forms": "^0.5.7",
     "clsx": "^2.0.0",
     "gsap": "^3.12.2",
-    "next-auth": "4.21.1"
+    "next-auth": "4.21.1",
+    "swiper": "^11.0.5"
   }
 }

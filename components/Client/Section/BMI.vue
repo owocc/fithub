@@ -17,12 +17,12 @@
                     <div class="relative border-2 border-first-light">
                         <input type="number" placeholder="身高"
                             class="w-full bg-transparent py-5 pl-5 pr-14 outline-none arrow-hide border-none input-no-shadow">
-                        <label  class="absolute right-5 top-5 text-title">cm</label>
+                        <label for="" class="absolute right-5 top-5 text-title">cm</label>
                     </div>
                     <div class="relative border-2 border-first-light">
                         <input type="number" placeholder="体重"
                             class="w-full bg-transparent py-5 pl-5 pr-14 outline-none arrow-hide border-none input-no-shadow">
-                        <label  class="absolute right-5 top-5 text-title">kg</label>
+                        <label for="" class="absolute right-5 top-5 text-title">kg</label>
                     </div>
                     <CommonUiPrimaryLink label="快速计算" primary border class="mt-6 lg:col-span-2">
                         <Icon name="ri:arrow-right-line"

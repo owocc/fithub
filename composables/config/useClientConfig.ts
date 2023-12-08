@@ -10,13 +10,17 @@ export default function useClientConfig () {
       text: '首页'
     },
     {
-      to: '/',
-      text: '肌肉训练百科'
+      to: '/shop',
+      text: '专卖店'
     },
     {
-      to: '/',
-      text: '专业名词百科'
-    }
+      to: '/encyclopedia',
+      text: '健身百科'
+    },
+    {
+      to: '/sport',
+      text: '动作库'
+    },
   ])
   return {
     menuList

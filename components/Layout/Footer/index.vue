@@ -1,5 +1,5 @@
 <template>
-    <footer class="max-w-6xl overflow-hidden m-auto px-6 pb-24">
+    <footer class="max-w-6xl overflow-hidden m-auto px-6 py-24">
         <!-- footer container -->
         <div class="grid gap-y-16 pt-4">
             <div>
@@ -42,7 +42,7 @@
                     </li>
                 </ul>
             </div>
-            <p class="text-sm text-base-light">@xxxx</p>
+            <p class="text-sm text-base-light">©️ Fithub 2023</p>
         </div>
     </footer>
 </template>
