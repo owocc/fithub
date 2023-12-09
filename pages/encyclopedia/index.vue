@@ -1,14 +1,19 @@
 <script setup>
+const title = ref('')
 const { data } = await useLazyAsyncData('encyclopediaList', () => {
     return $fetch('/api/encyclopedia/list', {
-        method: 'GET'
+        method: 'GET',
+        query: {
+            title: title.value
+        }
     })
 },
     {
         default: () => ({
             list: [],
             total: 0
-        })
+        }),
+        watch:[title]
     }
 )
 
@@ -16,7 +21,7 @@ const { data } = await useLazyAsyncData('encyclopediaList', () => {
 <template>
     <ShopNavigation title="FitHub 健身百科" icon="i-ri-book-3-line" />
     <div class="w-full mb-4 py-3 px-4 bg-first-gray/5 rounded-md">
-        <input type="text" placeholder="搜索想要找的百科名称" class="bg-transparent outline-none w-full">
+        <input type="text" placeholder="搜索想要找的百科名称" class="bg-transparent outline-none w-full" v-model="title">
     </div>
 
     <div class="flex flex-col gap-y-4">
@@ -29,5 +34,4 @@ const { data } = await useLazyAsyncData('encyclopediaList', () => {
             <UiButton icon="i-ri-arrow-down-line" class="btn-sm" label="查看更多" />
         </div> -->
     </div>
-    <UiScrollUp />
 </template>

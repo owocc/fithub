@@ -169,6 +169,17 @@ model SportCategory {
   sport Sport[]
 }
 
+// 订阅消息,根据邮箱订阅
+model Subscribe {
+  id     Int     @id @default(autoincrement())
+  mail   String
+  status Boolean @default(true)
+
+  // 时间记录
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
 // ----------- 辅助表 ------------
 
 // 动作和百科关联

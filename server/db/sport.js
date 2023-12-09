@@ -2,14 +2,17 @@ import prisma from "./prisma";
 // -------- 动作库 Service --------
 
 // 获取动作库列表
-export const getSportList = async ({ pagination, query }) => {
-  const { skip, take } = pagination;
-
+export const getSportList = async ({ query }) => {
   // 查询条件
-  const where = {};
+  const where = {
+    name: {
+      contains: query?.name,
+    },
+  };
 
   const [list, total] = await Promise.all([
     prisma.sport.findMany({
+      where,
       include: {
         category: true,
         image: true,

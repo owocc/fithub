@@ -27,5 +27,5 @@ const { data } = await useFetch(`/api/shop/${id}`, {
             </template>
         </div>
     </div>
-    <UiScrollUp />
+    
 </template>

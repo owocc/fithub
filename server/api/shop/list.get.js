@@ -1,10 +1,8 @@
 import { getProductList } from "~/server/db/product";
 
 export default defineEventHandler(async (event) => {
-  const pagination = paginationHelper(event);
-  const { total, list } = await getProductList({
-    pagination,
-  });
+  const query = getQuery(event);
+  const { total, list } = await getProductList({ query });
   return {
     list,
     total,

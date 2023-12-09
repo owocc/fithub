@@ -31,9 +31,9 @@ nuxtApp.hook('page:start', () => {
                     {{ item.text }}
                 </NuxtLink>
             </li>
-            <li>
-                <CommonUiPrimaryLink label="立即注册" to="/" white />
-            </li>
+            <!-- <li>
+                <UiPrimaryLink label="立即注册" to="/register" white />
+            </li> -->
         </ul>
         <div class="absolute top-4 right-5 text-xl cursor-pointer lg:hidden text-title" @click="emit('close')">
             <Icon name="ri:close-line" />

@@ -1,10 +1,33 @@
 import prisma from "./prisma";
-export const getEncyclopediaList = async ({ pagination, query }) => {
+export const getEncyclopediaList = async ({ query }) => {
+  const [list, total] = await Promise.all([
+    prisma.encyclopedia.findMany({
+      where: {
+        title: {
+          contains: query?.title,
+        },
+      },
+      select: {
+        id: true,
+        title: true,
+        description: true,
+        createdAt: true,
+        updatedAt: true,
+        category: true,
+        image: true,
+      },
+    }),
+    prisma.encyclopedia.count(),
+  ]);
+
+  return {
+    list,
+    total,
+  };
+};
+
+export const getEncyclopediaPage = async ({ pagination, query }) => {
   const { skip, take } = pagination;
-  //   const { name } = query;
-
-  //   const where = name ? { name: { contains: name } } : {};
-
   const [list, total] = await Promise.all([
     prisma.encyclopedia.findMany({
       select: {
@@ -16,6 +39,8 @@ export const getEncyclopediaList = async ({ pagination, query }) => {
         category: true,
         image: true,
       },
+      skip,
+      take,
     }),
     prisma.encyclopedia.count(),
   ]);

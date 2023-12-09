@@ -1,23 +1,5 @@
 <script setup>
-const infoMap = [
-    {
-        title: '品牌',
-        key: 'brand'
-    },
-    {
-        title: '产地',
-        key: 'origin'
-    },
-    {
-        title: '型号',
-        key: 'modelName'
-    },
-    {
-        title: '商品编号',
-        key: 'productNumber'
-    },
-]
-
+const {infoMap} = useProduct()
 const props = defineProps({
     detail: {
         type: Object,

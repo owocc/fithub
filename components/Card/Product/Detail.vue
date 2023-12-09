@@ -1,4 +1,5 @@
 <script setup>
+
 const props = defineProps({
     product: {
         type: Object,
@@ -10,6 +11,10 @@ const props = defineProps({
     }
 })
 const { formatPrice } = useUtils()
+
+// 购物车
+const cartStore = useCartStore()
+
 </script>
 <template>
     <div class="w-full flex-1 flex-col flex  gap-4 bg-first-gray-950 p-4 justify-between rounded-sm">
@@ -28,7 +33,8 @@ const { formatPrice } = useUtils()
         </div>
 
         <div class="flex gap-4 flex-col lg:flex-row lg:justify-end">
-            <UiButton label="加入购物车" icon="i-ri-shopping-cart-2-line" class="btn-primary w-full lg:w-auto" desc="快到车里来~" />
+            <UiButton label="加入购物车" icon="i-ri-shopping-cart-2-line" class="btn-primary w-full lg:w-auto" desc="快到车里来~"
+                @click="cartStore.add(props.product)" />
         </div>
     </div>
 </template>

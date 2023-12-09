@@ -19,6 +19,8 @@ const props = defineProps({
 })
 const { limitText, formatPrice } = useUtils()
 const { viewProduct } = useProduct()
+// 购物车
+const cartStore = useCartStore()
 </script>
 <template>
     <div
@@ -48,7 +50,9 @@ const { viewProduct } = useProduct()
         <div class="w-full flex gap-4">
             <UiButton label="查看详情" class="h-12  w-full btn-secondary" icon="i-ri-eye-line"
                 @click="viewProduct(props.product.id)" />
-            <UiButton label="加入购物车" class="w-full btn-primary" icon="i-ri-shopping-cart-2-line" />
+            <UiButton label="加入购物车" class="w-full btn-primary" icon="i-ri-shopping-cart-2-line" 
+            @click="cartStore.add(props.product)"
+            />
         </div>
     </div>
 </template>
