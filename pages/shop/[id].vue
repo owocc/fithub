@@ -1,6 +1,6 @@
 <script setup>
 const id = useRoute().params.id
-const { data } = useFetch(`/api/shop/${id}`, {
+const { data } = await useFetch(`/api/shop/${id}`, {
     method: 'get'
 })
 </script>

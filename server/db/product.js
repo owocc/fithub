@@ -21,8 +21,7 @@ export const getProductList = async ({ pagination, query }) => {
         },
       },
     },
-    skip,
-    take,
+
   });
 
   const total = await prisma.product.count();

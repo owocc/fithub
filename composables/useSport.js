@@ -1,6 +1,7 @@
 export default function () {
   const viewSport = (id) => {
-    useRouter().push("/sport/" + id);
+    const router = useRouter();
+    router.push("/sport/" + id);
   };
   return {
     viewSport,

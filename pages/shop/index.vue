@@ -12,13 +12,11 @@ const { data } = await useLazyAsyncData('productList', () => {
 })
 
 
-
 </script>
 <template>
     <ShopNavigation icon="i-ri-shopping-bag-line">
         <template #after>
-            <UiButton desc="购物车" icon="i-ri-shopping-cart-2-line" @click="$router.push('/shop/cart')" square
-                class="btn-square" gray />
+            <UiButton desc="购物车" icon="i-ri-shopping-cart-2-line" to="/shop/cart" square class="btn-square" gray />
         </template>
     </ShopNavigation>
 

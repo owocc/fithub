@@ -1,5 +1,5 @@
 <script setup>
-const { data } = await useAsyncData('encyclopediaList', () => {
+const { data } = await useLazyAsyncData('encyclopediaList', () => {
     return $fetch('/api/encyclopedia/list', {
         method: 'GET'
     })

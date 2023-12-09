@@ -1,6 +1,7 @@
 export default function () {
   const viewDetail = (id) => {
-    useRouter().push("/encyclopedia/" + id);
+    const router = useRouter();
+    router.push("/encyclopedia/" + id);
   };
   return {
     viewDetail,

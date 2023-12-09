@@ -19,6 +19,10 @@ const props = defineProps({
     gray: {
         type: Boolean,
         default: false
+    },
+    to: {
+        type: String,
+        required: false
     }
 })
 
@@ -38,10 +42,17 @@ const btnClasses = computed(() => clsx(
     props.gray && 'bg-first-gray-950 hover:bg-first-gray-900',
 ))
 
+const emit = defineEmits(['click'])
+const router = useRouter()
+const handlerClick = () => {
+    console.log('121')
+    if (props.to) return router.push(props.to)
+    emit('click')
+}
 </script>
 <template>
     <div :class="toolTipClasses" :data-tip="props.desc">
-        <button v-bind="$attrs" :class="btnClasses">
+        <button @click="handlerClick" v-bind="$attrs" :class="btnClasses">
             <Icon v-if="props.icon" :name="props.icon" class="text-xl" />
             <span v-if="props.label">{{ label }}</span>
         </button>

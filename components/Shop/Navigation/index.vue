@@ -12,6 +12,12 @@ const props = defineProps({
         type: String,
     }
 })
+// 返回上一页
+const router = useRouter()
+const handlerBack = () => {
+
+    router.back()
+}
 </script>
 <template>
     <nav class="flex justify-between w-full mb-4 items-center">
@@ -19,7 +25,7 @@ const props = defineProps({
 
         <div class="flex items-center gap-x-4">
             <slot name="before">
-                <UiButton v-if="props.back" desc="返回" icon="i-ri-arrow-go-back-line" @click="$router.back()"
+                <UiButton v-if="props.back" desc="返回" icon="i-ri-arrow-go-back-line" @click="handlerBack"
                     class="btn-square " gray />
             </slot>
             <slot name="title">

@@ -16,8 +16,6 @@ export const getEncyclopediaList = async ({ pagination, query }) => {
         category: true,
         image: true,
       },
-      skip,
-      take,
     }),
     prisma.encyclopedia.count(),
   ]);
