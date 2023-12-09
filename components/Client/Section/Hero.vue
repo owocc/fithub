@@ -13,7 +13,7 @@ import type clsx from 'clsx';
                 <p class="mb-10 max-w-md">提供实用、有效且富有趣味的科学健身知识的平台，致力于助您形成科学的健身理念
                 </p>
 
-                <CommonUiPrimaryLink label="健身百科" class="md:max-w-xs" to="/" primary border>
+                <CommonUiPrimaryLink to="/encyclopedia" label="健身百科" class="md:max-w-xs" primary border>
                     <Icon name="ri:arrow-right-line"
                         class="text-xl group-hover:translate-x-1 transition-transform duration-300" />
                 </CommonUiPrimaryLink>

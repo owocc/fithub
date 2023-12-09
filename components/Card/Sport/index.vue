@@ -23,8 +23,8 @@ const { viewSport } = useSport()
 <template>
     <div class="p-4 bg-first-gray-950 flex flex-col rounded-sm items-center gap-y-4">
         <div class="flex  justify-between items-center w-full">
-            <h1>{{ props.sport.name }}</h1>
-            <UiBadge :label="props.sport.category.name" />
+            <h1>{{ props.sport?.name }}</h1>
+            <UiBadge :label="props.sport.category?.name" />
         </div>
         <img :src="props.sport.image.url" alt="" class="rounded-sm">
         <template v-if="!hiddAction">
