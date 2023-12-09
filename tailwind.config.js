@@ -53,5 +53,9 @@ module.exports = {
       strategy: "class",
     }),
     require("daisyui"),
+    require("@tailwindcss/typography"),
   ],
 };
+
+
+

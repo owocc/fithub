@@ -9,6 +9,9 @@ export default defineNuxtConfig({
     "@bg-dev/nuxt-naiveui",
     "nuxt-icon",
     "@nuxtjs/google-fonts",
+    "@pinia/nuxt",
+    "@vueuse/nuxt",
+    "@pinia-plugin-persistedstate/nuxt",
   ],
   typescript: {
     shim: false,
@@ -26,6 +29,7 @@ export default defineNuxtConfig({
       ],
     },
   },
+
   imports: {
     dirs: [
       "composables/client/**",

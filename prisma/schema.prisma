@@ -18,18 +18,11 @@ model Category {
 
   name        String
   description String?
-  image       String?
 
-  // 分类可以包含多个商品
-  products CategoryProduct[]
-
-  // 分类有父级分类, 一个父级分类可以包含多个子分类,父级分类在数据库建立时确定了,不可更改
-  parentId Int?
-  parent   Category?  @relation("Parents", fields: [parentId], references: [id])
-  children Category[] @relation("Parents")
+  products Product[]
 }
 
-// 商品
+// 商品表
 model Product {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
@@ -38,23 +31,30 @@ model Product {
   name        String
   description String
   price       Decimal
-  stock       Int
-  image       Image[]
+  images      Image[]
 
-  categorys CategoryProduct[]
+  category   Category? @relation(fields: [categoryId], references: [id])
+  categoryId Int?
+
+  order        Order[] // 和订单的关联
+  sports       SportJoinProduct[] // 和动作库的关联
+  encyclopedia EncyclopediaJoinProduct[] // 和百科的关联
+
+  detail          ProductDetail? @relation(fields: [productDetailId], references: [id])
+  productDetailId Int?
 }
 
-// 多对多关系, 一个商品可以属于多个分类, 一个分类可以包含多个商品
-model CategoryProduct {
+model ProductDetail {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  category   Category @relation(fields: [categoryId], references: [id])
-  categoryId Int
-
-  product   Product @relation(fields: [productId], references: [id])
-  productId Int
+  images        Image[]
+  brand         String // 品牌 
+  origin        String //商品产地
+  modelName     String //型号
+  productNumber String //商品编号
+  product       Product[]
 }
 
 // 健身百科
@@ -66,11 +66,17 @@ model Encyclopedia {
   updatedAt DateTime @updatedAt
 
   // 标题
-  title   String
-  content String?
-  image   Image[]
+  title       String
+  content     String? @db.Text
+  description String?
+  image       Image?  @relation(fields: [imageId], references: [id])
 
-  categorys EncyclopediaJoinCategory[]
+  sports   SportJoinEncyclopedia[] // 和动作库的关联
+  products EncyclopediaJoinProduct[] // 和商品的关联
+
+  category   EncyclopediaCategory? @relation(fields: [categoryId], references: [id])
+  categoryId Int?
+  imageId    Int
 }
 
 // 健身百科分类
@@ -81,24 +87,9 @@ model EncyclopediaCategory {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  name         String
-  description  String?
-  image        String? // 分类图片,可能大概用不上,先设计放着
-  sncyclopedia EncyclopediaJoinCategory[]
-}
-
-model EncyclopediaJoinCategory {
-  id Int @id @default(autoincrement())
-
-  // 时间记录
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  category   EncyclopediaCategory @relation(fields: [categoryId], references: [id])
-  categoryId Int
-
-  product   Encyclopedia @relation(fields: [productId], references: [id])
-  productId Int
+  name          String
+  description   String?
+  encyclopedias Encyclopedia[]
 }
 
 // 图片,为了方便图片管理,单独建立一个表
@@ -107,11 +98,120 @@ model Image {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  url String
-  alt String?
+  url  String
+  alt  String?
+  sort Int     @default(0) // 排序字段
 
-  Product        Product?      @relation(fields: [productId], references: [id])
-  productId      Int?
-  Encyclopedia   Encyclopedia? @relation(fields: [encyclopediaId], references: [id])
-  encyclopediaId Int?
+  product         Product?       @relation(fields: [productId], references: [id])
+  productId       Int?
+  sport           Sport[]
+  encyclopedia    Encyclopedia[]
+  productDetail   ProductDetail? @relation(fields: [productDetailId], references: [id])
+  productDetailId Int?
+}
+
+// 用户
+model User {
+  id       Int    @id @default(autoincrement())
+  nickname String @default("FitHub新用户")
+  mail     String @unique
+  password String
+
+  money Decimal @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  order Order[]
+}
+
+// 订单,一个订单对应一件商品,一个订单对应一个用户
+// 订单查询时,查询总价是通过商品价格*商品数量得到的
+model Order {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // 订单包含的商品
+  product   Product @relation(fields: [productId], references: [id])
+  productId Int
+
+  count      Int // 订单购买时包含的商品数量
+  // 订单总价
+  totalPrice Decimal // 总价要记录在数据库中,因为商品价格可能会变动
+
+  // 订单所属用户
+  user   User @relation(fields: [userId], references: [id])
+  userId Int
+}
+
+// 动作库
+model Sport {
+  id          Int     @id @default(autoincrement())
+  name        String
+  description String?
+  image       Image   @relation(fields: [imageId], references: [id])
+  imageId     Int
+
+  category   SportCategory? @relation(fields: [categoryId], references: [id])
+  categoryId Int?
+
+  // 动作和百科的关联
+  encyclopedias SportJoinEncyclopedia[]
+  // 动作和商品的关联
+  products      SportJoinProduct[]
+}
+
+// 动作库分类
+model SportCategory {
+  id    Int     @id @default(autoincrement())
+  name  String
+  sport Sport[]
+}
+
+// ----------- 辅助表 ------------
+
+// 动作和百科关联
+model SportJoinEncyclopedia {
+  id Int @id @default(autoincrement())
+
+  // 时间记录
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  sportId        Int
+  encyclopediaId Int
+
+  sport        Sport        @relation(fields: [sportId], references: [id])
+  encyclopedia Encyclopedia @relation(fields: [encyclopediaId], references: [id])
+}
+
+// 动作和商品关联
+model SportJoinProduct {
+  id Int @id @default(autoincrement())
+
+  // 时间记录
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  sportId   Int
+  productId Int
+
+  sport   Sport   @relation(fields: [sportId], references: [id])
+  product Product @relation(fields: [productId], references: [id])
+}
+
+// 百科和商品的关联
+model EncyclopediaJoinProduct {
+  id Int @id @default(autoincrement())
+
+  // 时间记录
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  encyclopediaId Int
+  productId      Int
+
+  encyclopedia Encyclopedia @relation(fields: [encyclopediaId], references: [id])
+  product      Product      @relation(fields: [productId], references: [id])
 }

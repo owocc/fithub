@@ -5,6 +5,6 @@
             <UiBadge />
         </div>
         <img src="/test/t1.gif" alt="" class="rounded-sm">
-        <UiButton icon="i-ri-eye-line" label="查看动作详情" class="btn-primary" @click="$router.push('/sport/detail')" />
+        <UiButton icon="i-ri-eye-line" label="查看动作详情" class="btn-primary" />
     </div>
 </template>

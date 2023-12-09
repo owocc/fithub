@@ -39,4 +39,4 @@ const init = async () => {
     console.log("初始化数据库完成!");
   }
 };
-await init();
+// await init();
