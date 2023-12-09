@@ -1,8 +1,0 @@
-{
-  "rewrites": [
-    {
-      "source": "http://s5e660qkv.hn-bkt.clouddn.com/(.*)",
-      "destination": "/api/proxy"
-    }
-  ]
-}
