@@ -22,7 +22,7 @@ const cartStore = useCartStore()
             <h1 class="text-xl">{{ props.product.name }}</h1>
             <p class="text-first-gray-400">{{ props.product.description }}</p>
             <div>
-                <UiBadge :label="props.product.category.name" />
+                <UiBadge :label="props.product.category" />
             </div>
 
             <div class="flex gap-2 border p-2 rounded-sm bg-first-gray-900 border-first-gray-700 items-center">

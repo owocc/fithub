@@ -1,6 +1,9 @@
 export default function () {
   //限制最大文本长度
   const limitText = (text, limit) => {
+    if (!text) {
+      return "";
+    }
     if (text.length > limit) {
       return text.slice(0, limit) + "...";
     } else {

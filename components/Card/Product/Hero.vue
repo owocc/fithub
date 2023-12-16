@@ -33,8 +33,8 @@ const icons = ['/img/pricing1.png', '/img/pricing2.png', '/img/pricing3.png']
                 {{ props.product.detail[item.key] }}
             </li>
         </ul>
-        <UiPrimaryLink label="查看详情" white border block :to="`/shop/${props.product.id}`">
+        <UiButtonPrimary label="查看详情" white border block :to="`/shop/${props.product.id}`">
             <Icon name="ri:arrow-right-line" class="text-xl group-hover:translate-x-1 transition-transform duration-300" />
-        </UiPrimaryLink>
+        </UiButtonPrimary>
     </article>
 </template>

@@ -1,38 +1,37 @@
 <script setup>
 definePageMeta({
-    layout: 'blank'
+    layout: 'account'
 })
+const formData = reactive({
+    username: '',
+    password: ''
+})
+
+const handlerSubmit = async (e) => {
+    e.preventDefault() //阻止默认提交
+    // 校验表单
+    if (!formData.username || !formData.password) {
+        useToast().error('请填写完整表单')
+        return
+    }
+    // 登录
+    const { loginUser } = useAuth()
+    await loginUser(toRaw(formData))
+    const router = useRouter()
+    router.push('/')
+}
 </script>
 <template>
-    <!-- 左边图片,右边登录表单 -->
-    <div class="flex min-h-screen gap-8 justify-center items-center mx-auto">
-        <!-- 左边图片 -->
-        <div class="hidden   h-screen w-1/2  justify-center items-center md:flex overflow-hidden">
-            <img src="/img/login-bg.jpg" alt="" class="h-full  w-full object-cover opacity-50">
-        </div>
-        <!-- 右边登录表单 -->
-        <div class="flex flex-1 h-screen flex-col justify-center items-center md:w-1/2">
-            <div class="w-80">
-                <h1 class="text-4xl font-bold mb-5">登录</h1>
-                <form>
-                    <div class="mb-4">
-                        <label class="block mb-2 text-sm font-bold text-gray-700">邮箱</label>
-                        <input type="text"
-                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
-                            placeholder="请输入邮箱" />
-                    </div>
-                    <div class="mb-4">
-                        <label class="block mb-2 text-sm font-bold text-gray-700">密码</label>
-                        <input type="password"
-                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
-                            placeholder="请输入密码" />
-                    </div>
-                    <div class="mb-4">
-                        <UiButton class="w-full btn-primary  py-2 rounded-md" label="登录" />
-                    </div>
-                </form>
-            </div>
+    <h1 class="text-4xl font-bold mb-5">登录</h1>
+    <form @submit="handlerSubmit">
+        <UiInput label="用户名" type="text" placeholder="请输入用户名" v-model="formData.username" />
 
+        <UiInput label="密码" type="password" placeholder="请输入密码" v-model="formData.password" />
+        <div class="mb-4">
+            <UiButtonPrimary block primary border label="登录" />
         </div>
+    </form>
+    <div>
+        <UiLink to="/register">注册账号</UiLink>
     </div>
 </template>

@@ -27,7 +27,7 @@ const cartStore = useCartStore()
         class="w-full h-full bg-first-gray/5 border-2 hover:border-first border-transparent transition-all cursor-pointer p-4 flex flex-col gap-y-4 rounded-md relative items-center overflow-hidden group">
 
         <UiBadge class="absolute -right-full top-6 inline-block transition-all group-hover:right-6"
-            :label="props.product.category.name" />
+            :label="props.product.category" />
 
         <!-- 商品图片 -->
         <img :src="props.product.images[0].url" class=" w-full h-full sm:max-h-80 rounded-sm object-contain aspect-square"

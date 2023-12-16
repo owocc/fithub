@@ -2,7 +2,7 @@
 import type clsx from 'clsx';
 <template>
     <!--  Home-->
-    <section class="pt-32 relative flex justify-center px-6 mb-32">
+    <section class="pt-12 relative flex justify-center px-6 mb-32">
         <div
             class="grid justify-center items-center md:grid-cols-2 lg:grid-cols-[repeat(2,max-content)]  justify-items-center gap-y-20">
             <div class="z-10 relative flex flex-col text-center md:text-left">
@@ -13,10 +13,10 @@ import type clsx from 'clsx';
                 <p class="mb-10 max-w-md">提供实用、有效且富有趣味的科学健身知识的平台，致力于助您形成科学的健身理念
                 </p>
 
-                <UiPrimaryLink to="/encyclopedia" label="健身百科" class="md:max-w-xs" primary border>
+                <UiButtonPrimary to="/encyclopedia" label="健身百科" class="md:max-w-xs" primary border>
                     <Icon name="ri:arrow-right-line"
                         class="text-xl group-hover:translate-x-1 transition-transform duration-300" />
-                </UiPrimaryLink>
+                </UiButtonPrimary>
             </div>
             <!--home images-->
 
@@ -32,12 +32,5 @@ import type clsx from 'clsx';
         </div>
     </section>
 </template>
-<script setup lang="ts">
-import clsx from 'clsx'
-const heroSelectionClasses = clsx(
-
-)
-
-</script>
   
   

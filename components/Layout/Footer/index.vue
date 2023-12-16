@@ -10,22 +10,9 @@
 
                 <FormSubscribe />
             </div>
-            <div class="grid gap-y-10 gap-x-14 grid-cols-2 md:grid-cols-3">
-                <UiLinks />
-            </div>
         </div>
 
         <div class="mt-20 flex flex-col gap-8 justify-center text-center ">
-            <div>
-                <ul class="flex gap-x-6 justify-center items-center">
-                    <li
-                        class="rounded-full bg-first w-8 h-8 grid text-xl text-title-black hover:bg-first-dark cursor-pointer outline outline-offset-4 outline-first">
-                        <nuxt-link class="justify-self-center">
-                            <Icon name="ri:wechat-2-fill" />
-                        </nuxt-link>
-                    </li>
-                </ul>
-            </div>
             <p class="text-sm text-base-light">©️ Fithub 2023</p>
         </div>
     </footer>

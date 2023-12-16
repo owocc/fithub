@@ -5,7 +5,8 @@ const height = ref(0)
 const weight = ref(0)
 
 // 计算 BMI
-const calculate = () => {
+const calculate = (e) => {
+    e.preventDefault()
     if (height.value === 0 || weight.value === 0) {
         message.value = '请输入正确的身高和体重😘 '
         return
@@ -42,7 +43,7 @@ const calculate = () => {
                     快速的帮你计算BMI，让你更好的了解自己的身体状况，更好的制定健身计划
                 </p>
 
-                <form class="grid gap-y-4 lg:grid-cols-2 md:gap-x-4">
+                <form class="grid gap-y-4 lg:grid-cols-2 md:gap-x-4" @submit="calculate">
                     <div class="relative border-2 border-first-light">
                         <input type="number" placeholder="身高" v-model="height"
                             class="w-full bg-transparent py-5 pl-5 pr-14 outline-none arrow-hide border-none input-no-shadow">
@@ -54,10 +55,10 @@ const calculate = () => {
                             class="w-full bg-transparent py-5 pl-5 pr-14 outline-none arrow-hide border-none input-no-shadow">
                         <label for="" class="absolute right-5 top-5 text-title">kg</label>
                     </div>
-                    <UiPrimaryLink @click="calculate" label="快速计算" primary border class="mt-6 lg:col-span-2">
+                    <UiButtonPrimary label="快速计算" primary border class="mt-6 lg:col-span-2">
                         <Icon name="ri:arrow-right-line"
                             class="text-xl group-hover:translate-x-1 transition-transform duration-300" />
-                    </UiPrimaryLink>
+                    </UiButtonPrimary>
                 </form>
                 <!-- 这里展示 BMI 计算结果喝提示 -->
                 <p class="absolute translate-y-4">{{ message }}</p>

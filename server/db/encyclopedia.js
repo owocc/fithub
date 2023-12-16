@@ -1,66 +1,69 @@
 import prisma from "./prisma";
-export const getEncyclopediaList = async ({ query }) => {
-  const [list, total] = await Promise.all([
+
+// 获取百科列表
+export const getEncyclopediaList = async ({ query, userId }) => {
+  const [list] = await Promise.all([
     prisma.encyclopedia.findMany({
       where: {
         title: {
           contains: query?.title,
         },
+        userId,
       },
-      select: {
-        id: true,
-        title: true,
-        description: true,
-        createdAt: true,
-        updatedAt: true,
-        category: true,
-        image: true,
-      },
+      orderBy: [
+        {
+          like: "desc", // 按照点赞数降序
+        },
+        {
+          createdAt: "desc", // 按照创建时间降序
+        },
+      ],
+      take: query?.limit,
     }),
-    prisma.encyclopedia.count(),
   ]);
 
   return {
     list,
-    total,
+    total: list.length,
   };
 };
 
-export const getEncyclopediaPage = async ({ pagination, query }) => {
-  const { skip, take } = pagination;
-  const [list, total] = await Promise.all([
-    prisma.encyclopedia.findMany({
-      select: {
-        id: true,
-        title: true,
-        description: true,
-        createdAt: true,
-        updatedAt: true,
-        category: true,
-        image: true,
-      },
-      skip,
-      take,
-    }),
-    prisma.encyclopedia.count(),
-  ]);
-
-  return {
-    list,
-    total,
-  };
-};
-
+//获取百科详情
 export const getEncyclopedia = async (id) => {
   return await prisma.encyclopedia.findUnique({
     where: {
       id,
     },
-    include: {
-      category: true,
-      image: true,
-      products: true,
-      sports: true,
+  });
+};
+
+//创建百科
+export const createEncylopedia = async (data, user) => {
+  return await prisma.encyclopedia.create({
+    data: {
+      title: data.title,
+      content: data.content,
+      userId: user.id,
+      description: data.description,
+    },
+  });
+};
+
+// 添加点赞
+export const addLike = async (id) => {
+  const encyclopedia = await prisma.encyclopedia.findUnique({
+    where: {
+      id: id,
+    },
+  });
+  const like = encyclopedia.like + 1;
+
+  return await prisma.encyclopedia.update({
+    where: {
+      id,
+    },
+    data: {
+      like,
     },
   });
 };

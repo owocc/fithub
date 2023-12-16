@@ -4,9 +4,7 @@ export default defineNuxtConfig({
     enabled: true,
   },
   modules: [
-    // "@sidebase/nuxt-auth",
     "@nuxtjs/tailwindcss",
-    "@bg-dev/nuxt-naiveui",
     "nuxt-icon",
     "@nuxtjs/google-fonts",
     "@pinia/nuxt",
@@ -29,13 +27,8 @@ export default defineNuxtConfig({
       ],
     },
   },
-
   imports: {
-    dirs: [
-      "composables/client/**",
-      "composables/admin/**",
-      "composables/config/*.{ts,js}",
-    ],
+    dirs: ["composables/config/*.{ts,js}"],
   },
   googleFonts: {
     families: {
@@ -44,5 +37,7 @@ export default defineNuxtConfig({
     download: true,
     overwriting: true,
   },
-  // auth: { origin: "http://www.localhost.com" },
+  runtimeConfig: {
+    jwtSecret: process.env.JWT_SECRET,
+  },
 });

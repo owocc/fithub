@@ -10,10 +10,10 @@ const { data } = await useFetch('/api/statistics', {
             <div class="grid gap-12 md:grid-cols-2  ">
                 <div class="px-6  z-10  relative md:order-1">
                     <UiSectionTitle title="Content statistics" before="内容" after="统计"
-                        desc="我们的网站上有各种有趣、实用的健身知识,你可以在这看到实时统计" />
+                        desc="我们的网站汇集了丰富而有趣的健身知识，您可以随时查看实时统计数据。" />
 
-                    <div class="grid grid-cols-2 gap-y-8 text-center">
-                        <div v-for="count in data" :key="count.key" class="rounded-full hover:bg-first-gray-950 p-2">
+                    <div class="grid grid-cols-2 gap-8 text-center">
+                        <div v-for="count in data" :key="count.key" class="p-2">
                             <h3 class="text-4xl italic font-normal font-kaushan mb-1">{{ count.value }}+</h3>
                             <!-- 订阅用户,器械数量,百科词条数,动作库数量 -->
                             <p class="text-sm">{{ count.label }}</p>

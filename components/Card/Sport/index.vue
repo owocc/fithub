@@ -4,12 +4,8 @@ const props = defineProps({
         type: Object,
         default: () => ({
             name: '动作名称',
-            image: {
-                url: '/img/logo-nav.png'
-            },
-            category: {
-                name: '动作分类'
-            }
+            image: '/img/logo-nav.png',
+            category: '动作分类'
         })
     },
     hiddAction: {
@@ -25,9 +21,9 @@ const { viewSport } = useSport()
         <div class="space-y-4">
             <div class="flex  justify-between items-center w-full">
                 <h1>{{ props.sport?.name }}</h1>
-                <UiBadge :label="props.sport.category?.name" />
+                <UiBadge :label="props.sport.category" />
             </div>
-            <img :src="props.sport.image.url" alt="" class="min-h-64 object-contain w-full">
+            <img :src="props.sport.image" alt="" class="h-64 md:w-64 object-contain w-full">
         </div>
         <template v-if="!hiddAction">
             <UiButton icon="i-ri-eye-line" label="查看动作详情" class="w-full 

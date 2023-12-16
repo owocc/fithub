@@ -3,40 +3,28 @@ import prisma from "./prisma";
 
 // 获取动作库列表
 export const getSportList = async ({ query }) => {
-  // 查询条件
-  const where = {
-    name: {
-      contains: query?.name,
-    },
-  };
-
-  const [list, total] = await Promise.all([
+  const [list] = await Promise.all([
     prisma.sport.findMany({
-      where,
-      include: {
-        category: true,
-        image: true,
+      // 查询条件
+      where: {
+        name: {
+          contains: query?.name,
+        },
       },
     }),
-    prisma.sport.count(),
   ]);
 
   return {
     list,
-    total,
+    total: list.length,
   };
 };
 
+// 获取动作库详情
 export const getSport = async (id) => {
   return await prisma.sport.findUnique({
     where: {
       id,
-    },
-    include: {
-      category: true,
-      encyclopedias: true,
-      products: true,
-      image: true,
     },
   });
 };

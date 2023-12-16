@@ -1,7 +1,7 @@
 import { contentStatistics } from "~/server/db/statistics";
 
 export default defineEventHandler(async (event) => {
-  const { encyclopediaTotal, productTotal, sportTotal, subscribeTotal } =
+  const { encyclopediaTotal, sportTotal, subscribeTotal } =
     await contentStatistics();
 
   return [
@@ -9,11 +9,6 @@ export default defineEventHandler(async (event) => {
       label: "百科数量",
       value: encyclopediaTotal,
       key: "encyclopediaTotal",
-    },
-    {
-      label: "产品数量",
-      value: productTotal,
-      key: "productTotal",
     },
     {
       label: "动作数量",

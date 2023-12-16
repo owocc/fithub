@@ -2,7 +2,7 @@
 const props = defineProps({
     title: {
         type: String,
-        default: 'Fithub 健身器材专卖店'
+        default: 'Fithub'
     },
     back: {
         type: Boolean,

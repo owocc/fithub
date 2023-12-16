@@ -37,7 +37,7 @@ html{
 @layer base {
   body {
     overflow-x: hidden;
-    @apply bg-base-body text-base;
+    @apply bg-base-body text-base min-h-screen;
   }
 
   h1,
