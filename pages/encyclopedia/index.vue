@@ -1,4 +1,9 @@
 <script setup>
+// 设置SEO信息
+useSeoMeta({
+    title:'Fithub | 健身百科'
+})
+
 const title = ref('')
 
 // 获取健身百科数据

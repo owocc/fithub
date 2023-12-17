@@ -23,7 +23,7 @@ const { viewSport } = useSport()
                 <h1>{{ props.sport?.name }}</h1>
                 <UiBadge :label="props.sport.category" />
             </div>
-            <img :src="props.sport.image" alt="" class="h-64 md:w-64 object-contain w-full">
+            <img :src="props.sport.image" alt="" class=" object-contain w-full">
         </div>
         <template v-if="!hiddAction">
             <UiButton icon="i-ri-eye-line" label="查看动作详情" class="w-full 

@@ -1,4 +1,10 @@
 <script setup>
+//设置SEO信息
+useSeoMeta({
+    title:'Fithub | 个人中心'
+})
+
+
 definePageMeta({
     middleware: ['auth']
 })
@@ -28,8 +34,6 @@ const handlerLogout = () => {
         <!-- 用户卡片信息 -->
         <!-- component -->
         <div class="relative  w-full my-3">
-
-
             <CardProfile />
             <CommonUserEncyclopediaList />
         </div>

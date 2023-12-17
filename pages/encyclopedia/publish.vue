@@ -1,5 +1,8 @@
 <script setup>
-
+// 设置SEO信息
+useSeoMeta({
+    title: "FitHub | 发布百科"
+})
 // 文章内容
 const formData = reactive({
     title: '',
@@ -30,7 +33,7 @@ const handlerSubmit = async () => {
     formData.content = ''
     formData.description = ''
 
-    viewDetail(res.id)
+    useRouter().replace(`/encyclopedia/${res.id}`)
 
 }
 

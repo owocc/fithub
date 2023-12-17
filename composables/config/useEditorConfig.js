@@ -101,14 +101,6 @@ export default function UseEditorConfig() {
       handlerClick: (editor) =>
         editor.chain().focus().setHorizontalRule().run(),
     },
-    {
-      key: 'k-heading-2',
-      activeParams: ['heading', { level: 2 }],
-      icon: 'i-tabler-math',
-      text: '数学公式',
-      handlerClick: (editor) =>
-        editor.chain().focus().toggleHeading({ level: 2 }).run(),
-    },
   ]
 
   // 编辑器右侧菜单

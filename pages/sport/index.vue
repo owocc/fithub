@@ -1,4 +1,10 @@
 <script setup>
+
+// 设置SEO信息
+useSeoMeta({
+    title:'Fithub | 动作库'
+})
+
 const name = ref('')
 const { data } = await useLazyAsyncData('sportList',
     () => {

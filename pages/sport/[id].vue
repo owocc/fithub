@@ -1,7 +1,15 @@
 <script setup>
 const id = useRoute().params.id
 const { data } = await useFetch(`/api/sport/${id}`, {
-    method: 'GET'
+    method: 'GET',
+    default:()=>({
+        name:'Fithub'
+    })
+})
+
+// 设置SEO信息
+useSeoMeta({
+    title: data.value.name
 })
 </script>
 <template>

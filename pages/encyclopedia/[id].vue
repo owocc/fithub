@@ -1,8 +1,10 @@
 <script setup>
+
 const id = useRoute().params.id
 const { data, refresh } = await useFetch(`/api/encyclopedia/${id}`, {
     method: 'GET',
     default: () => ({
+        title: "百科详情"
     })
 })
 const { fetchLike } = useEncyclopedia()
@@ -11,12 +13,17 @@ const handlerLike = async () => {
     useToast().success(res.msg)
     await refresh()
 
-}   
+}
+
+// 设置SEO信息
+useSeoMeta({
+    title: data.value.title
+})
 </script>
 <template>
     <ShopNavigation title="百科详情" back>
         <template #after>
-            <UiButton @click="handlerLike" icon="i-ri-thumb-up-line" :label="''+data.like" />
+            <UiButton @click="handlerLike" icon="i-ri-thumb-up-line" :label="'' + data.like" />
         </template>
     </ShopNavigation>
     <div class=" flex flex-col gap-4">
