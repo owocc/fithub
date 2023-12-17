@@ -1,5 +1,4 @@
 import { createEncylopedia } from "~/server/db/encyclopedia";
-import { code } from "../../../.nuxt/analyze/.vite-inspect/assets/diff.worker-IXaBev30";
 
 // 创建百科
 export default defineEventHandler(async (event) => {
